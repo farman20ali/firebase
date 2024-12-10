@@ -1,0 +1,126 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9; /* Light background */
+  color: #333;
+}
+
+/* Container Centering */
+.App {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  height: 100vh;           /* Takes full viewport height */
+  margin: 0;               /* Remove default margin */
+}
+/* Container Around Each Component */
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; /* Limit the width for better layout */
+  margin-top: 20px;
+}
+
+/* Logo Styling */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  margin-bottom: 20px;
+}
+
+/* Animation for Logo */
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* Header Styling */
+.App-header {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Max width for header */
+}
+
+/* Button Styles */
+button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #4fa3f7;
+}
+
+/* Input Fields */
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #61dafb;
+  outline: none;
+}
+
+/* Link Styling */
+.App-link {
+  color: #61dafb;
+  font-size: 18px;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.App-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+  .App-header {
+    font-size: 16px;
+    padding: 30px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    width: 90%;
+  }
+
+  button {
+    width: 90%;
+  }
+}
+
+/* Animation for Logo */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
