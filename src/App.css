@@ -9,9 +9,11 @@ body {
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center;     /* Centers vertically */
-  height: 180vh;           /* Takes full viewport height */
+  min-height: 100vh;           /* Takes full viewport height */
   margin: 0;               /* Remove default margin */
 }
+
+
 
 /* App Header Centered */
 .App-header {
