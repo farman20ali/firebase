@@ -8,13 +8,17 @@ function FireStoreScreen() {
 
 
   return (
-    <div>
-    <div className="App-header">
-    <h2> <Link to="/">Home</Link></h2>  
-      <h1>React Firebase FireStore</h1> 
+    <div className="App">
+      <div className="App-header">
+        <h2>
+          <Link className="App-link" to="/">
+            Home
+          </Link>
+        </h2>
+        <h1>React Firebase FireStore</h1> 
       <FireStore/>
       <FirestoreAdvanced />
-    </div>
+      </div>
     </div>
   );
 }

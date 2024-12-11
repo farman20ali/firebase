@@ -31,18 +31,21 @@ function AuthenticationScreen() {
 
 
   return (
-    <div className='App'>
-       
-    <div className="App-header">  
-        <h2> <Link to="/">Home</Link></h2>
-      <h1>React Firebase Authentication</h1>
+    <div className="App">
+      <div className="App-header">
+        <h2>
+          <Link className="App-link" to="/">
+            Home
+          </Link>
+        </h2>
+        <h1>React Firebase Authentication</h1>
       <h3> {email}</h3>
       <CreateAccount />
       <LoginWithEmail /> 
       <LoginWithProvider />
       <LoginWithGithubProvider />
       <Logout />
-    </div>
+      </div>
     </div>
   );
 }

@@ -167,3 +167,63 @@ input[type="password"]:focus {
     gap: 1rem;
   }
 }
+
+
+/* Container for Firebase Storage */
+.firebase-storage {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* File input styling */
+.firebase-storage input[type="file"] {
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Upload button */
+.firebase-storage button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.firebase-storage button:hover {
+  background-color: #4fa3f7;
+}
+
+/* Progress text */
+.firebase-storage p {
+  margin: 10px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Link for download URL */
+.firebase-storage a {
+  color: #61dafb;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.firebase-storage a:hover {
+  text-decoration: underline;
+}

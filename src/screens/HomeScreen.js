@@ -15,6 +15,9 @@ export default function HomeScreen() {
           <li className="nav-item">
             <Link to="/FireStore" className="nav-link">FireStore</Link>
           </li>
+          <li className="nav-item">
+            <Link to="/FirebaseStorage" className="nav-link">FirebaseStorage</Link>
+          </li>
         </ul>
       </nav>
     </div>
