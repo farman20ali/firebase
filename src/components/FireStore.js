@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { collection, addDoc, doc, getDoc, deleteDoc, updateDoc, getDocs } from 'firebase/firestore';
+import React, { useState,useEffect } from 'react';
+import { collection, addDoc, doc, getDoc, deleteDoc, updateDoc, getDocs ,onSnapshot} from 'firebase/firestore';
 import { database } from '../firebaseConfig';
 
 const FireStore = () => {
@@ -9,7 +9,7 @@ const FireStore = () => {
   });
   const [docId, setDocId] = useState(''); // For delete/update specific documents
   const [allUsers, setAllUsers] = useState([]); // Store all user documents
-
+  const [lastUpdated, setLastUpdated] = useState(null); // State to track the timestamp
   // Handle input changes
   const handleInputs = (event) => {
     let inputs = { [event.target.name]: event.target.value };
@@ -48,6 +48,7 @@ const FireStore = () => {
       const querySnapshot = await getDocs(collection(database, 'users'));
       const users = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setAllUsers(users);
+      setLastUpdated(new Date().toLocaleString()); // Set the timestamp when users are updated
       alert(`Retrieved ${users.length} users.`);
     } catch (error) {
       alert(`Error retrieving users: ${error.message}`);
@@ -75,6 +76,24 @@ const FireStore = () => {
       alert(`Error deleting document: ${error.message}`);
     }
   };
+
+   // Real-time listener for all documents
+   useEffect(() => {
+    const colRef = collection(database, 'users');
+
+    // Subscribe to snapshot updates
+    const unsubscribe = onSnapshot(colRef, (snapshot) => {
+      const users = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setAllUsers(users);
+      setLastUpdated(new Date().toLocaleString()); // Set the timestamp when users are updated
+    });
+
+    // Cleanup listener on component unmount
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div>
@@ -110,7 +129,8 @@ const FireStore = () => {
 
       {allUsers.length > 0 && (
         <div>
-          <h3>All Users</h3>
+          <h3>All Users </h3>
+          <p>Last Updated: {lastUpdated}</p>
           <ul>
             {allUsers.map(user => (
               <li key={user.id}>{`ID: ${user.id}, Email: ${user.email}, Password: ${user.password}`}</li>
