@@ -5,15 +5,27 @@ body {
   background-color: #f4f4f9; /* Light background */
   color: #333;
 }
-
-/* Container Centering */
 .App {
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center;     /* Centers vertically */
-  height: 100vh;           /* Takes full viewport height */
+  height: 180vh;           /* Takes full viewport height */
   margin: 0;               /* Remove default margin */
 }
+
+/* App Header Centered */
+.App-header {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Use percentage for responsiveness */
+  max-width: 500px; /* Constrain max width */
+  box-sizing: border-box; /* Include padding in dimensions */
+}
+
 /* Container Around Each Component */
 .container {
   background-color: white;
@@ -39,17 +51,6 @@ body {
   }
 }
 
-/* Header Styling */
-.App-header {
-  background-color: #282c34;
-  color: white;
-  text-align: center;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px; /* Max width for header */
-}
 
 /* Button Styles */
 button {
@@ -122,5 +123,47 @@ input[type="password"]:focus {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Styling for the navigation */
+.navbar {
+  background-color: #333;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-item {
+  display: inline-block;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #61dafb; /* React blue */
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
 }
