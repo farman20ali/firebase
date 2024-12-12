@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { collection, addDoc, doc, getDoc, deleteDoc, updateDoc, getDocs,query ,where} from 'firebase/firestore';
-import { database } from '../firebaseConfig';
+import { fireStoreDatabase } from '../firebaseConfig';
 
 const FireStore = () => {
   const [data, setData] = useState({
@@ -19,7 +19,7 @@ const FireStore = () => {
   // Add document to Firestore
   const addUser = async () => {
     try {
-      const docRef = await addDoc(collection(database, 'users'), data);
+      const docRef = await addDoc(collection(fireStoreDatabase, 'users'), data);
       alert(`Document added with ID: ${docRef.id}`);
     } catch (error) {
       alert(`Error adding document: ${error.message}`);
@@ -29,7 +29,7 @@ const FireStore = () => {
   // Retrieve a document by ID
   const getUser = async () => {
     try {
-      const docRef = doc(database, 'users', docId);
+      const docRef = doc(fireStoreDatabase, 'users', docId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -45,7 +45,7 @@ const FireStore = () => {
   // Retrieve all documents
   const getAllUsers = async () => {
     try {
-      const querySnapshot = await getDocs(collection(database, 'users'));
+      const querySnapshot = await getDocs(collection(fireStoreDatabase, 'users'));
       const users = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setAllUsers(users);
       alert(`Retrieved ${users.length} users.`);
@@ -57,7 +57,7 @@ const FireStore = () => {
     // Retrieve all documents
     const getFilteredUsers = async () => {
       try {
-        const usersRef=collection(database, 'users');
+        const usersRef=collection(fireStoreDatabase, 'users');
         const q = query(usersRef, where("email", "==", 'farman')); // Apply filter
         const querySnapshot = await getDocs(q);
         
@@ -73,7 +73,7 @@ const FireStore = () => {
   // Update a document by ID
   const updateUser = async () => {
     try {
-      const docRef = doc(database, 'users', docId);
+      const docRef = doc(fireStoreDatabase, 'users', docId);
       await updateDoc(docRef, data);
       alert('Document updated successfully');
     } catch (error) {
@@ -84,7 +84,7 @@ const FireStore = () => {
   // Delete a document by ID
   const deleteUser = async () => {
     try {
-      const docRef = doc(database, 'users', docId);
+      const docRef = doc(fireStoreDatabase, 'users', docId);
       await deleteDoc(docRef);
       alert('Document deleted successfully');
     } catch (error) {

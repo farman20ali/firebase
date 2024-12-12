@@ -1,6 +1,6 @@
 import React, { useState, useEffect,useCallback  } from 'react';
 import { collection, addDoc, doc,  getDocs, deleteDoc } from 'firebase/firestore';
-import { database } from '../firebaseConfig';
+import { fireStoreDatabase } from '../firebaseConfig';
 
 const FirestoreAdvanced = () => {
   const [parentData, setParentData] = useState({
@@ -15,7 +15,7 @@ const FirestoreAdvanced = () => {
   const [parents, setParents] = useState([]);
   const [children, setChildren] = useState([]);
 
-  const parentsCollectionRef = collection(database, 'parents');
+  const parentsCollectionRef = collection(fireStoreDatabase, 'parents');
 
   // Handle parent input changes
   const handleParentInputs = (event) => {
@@ -46,7 +46,7 @@ const FirestoreAdvanced = () => {
         alert('Please enter a Parent ID to add a child.');
         return;
       }
-      const childCollectionRef = collection(database, `parents/${parentId}/children`);
+      const childCollectionRef = collection(fireStoreDatabase, `parents/${parentId}/children`);
       const docRef = await addDoc(childCollectionRef, childData);
       alert(`Child added with ID: ${docRef.id}`);
     } catch (error) {
@@ -78,7 +78,7 @@ const FirestoreAdvanced = () => {
         alert('Please enter a Parent ID to retrieve children.');
         return;
       }
-      const childCollectionRef = collection(database, `parents/${parentId}/children`);
+      const childCollectionRef = collection(fireStoreDatabase, `parents/${parentId}/children`);
       const querySnapshot = await getDocs(childCollectionRef);
       const childrenList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setChildren(childrenList);
@@ -90,7 +90,7 @@ const FirestoreAdvanced = () => {
   // Delete a parent document
   const deleteParent = async (id) => {
     try {
-      const docRef = doc(database, 'parents', id);
+      const docRef = doc(fireStoreDatabase, 'parents', id);
       await deleteDoc(docRef);
       alert('Parent deleted successfully');
     } catch (error) {

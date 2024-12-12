@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { collection ,onSnapshot,query,where} from 'firebase/firestore';
-import { database } from '../firebaseConfig';
+import { fireStoreDatabase } from '../firebaseConfig';
 
 const FireStoreSnap = () => {
   
@@ -10,7 +10,7 @@ const FireStoreSnap = () => {
   const [filteredUsers,setFilteredUsers]=useState([]);
    // Real-time listener for all documents
    useEffect(() => {
-    const colRef = collection(database, 'users');
+    const colRef = collection(fireStoreDatabase, "users");
 
     // Subscribe to snapshot updates
     const unsubscribe = onSnapshot(colRef, (snapshot) => {
@@ -29,7 +29,7 @@ const FireStoreSnap = () => {
 
    // Real-time listener for filtered users
    useEffect(() => { 
-    const usersRef=collection(database, 'users');
+    const usersRef = collection(fireStoreDatabase, "users");
     const q = query(usersRef, where("email", "==", 'farman')); // Apply filter 
     // Subscribe to snapshot updates
     const unsubscribe = onSnapshot(q, (snapshot) => {
