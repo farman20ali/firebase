@@ -10,7 +10,6 @@ const CloudNotification = () => {
   async function requestNotificationPermission() {
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
-      toast.success("successfully granted");
       // Generate Token
       const token = await getToken(messaging, {
         vapidKey: process.env.REACT_APP_V_API_D_KEY,
@@ -39,7 +38,7 @@ const CloudNotification = () => {
   const copyToken = () => {
     navigator.clipboard.writeText(token).then(
       () => {
-        console.log("Token copied to clipboard!");
+         toast.success("Token copied to clipboard!");
         setCopyStatus("Copied!"); // Update the button text to "Copied!"
         setTimeout(() => setCopyStatus("Copy Token"), 5000); // Reset after 2 seconds
       },
