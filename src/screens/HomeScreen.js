@@ -31,6 +31,12 @@ export default function HomeScreen() {
               Real Time Database
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/NotificationScreen" className="nav-link">
+              Notification
+            </Link>
+          </li>
+
         </ul>
       </nav>
     </div>
